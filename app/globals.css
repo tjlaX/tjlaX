@@ -1,0 +1,277 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 4%;
+    --foreground: 210 40% 98%;
+    --card: 222 20% 6%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 20% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 213 94% 60%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 222 20% 10%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 222 20% 12%;
+    --muted-foreground: 215 20% 55%;
+    --accent: 213 94% 60%;
+    --accent-foreground: 0 0% 4%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 20% 14%;
+    --input: 222 20% 14%;
+    --ring: 213 94% 60%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#060810] text-[#e8eaf2];
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: rgba(59, 130, 246, 0.35);
+    color: #e8eaf2;
+  }
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060810;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e3a5f;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b82f6;
+  }
+}
+
+/* ── Keyframes ── */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.3); }
+}
+
+@keyframes slowDrift {
+  0%   { transform: translateY(0) translateX(0); }
+  50%  { transform: translateY(-8px) translateX(4px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(59,130,246,0.15), 0 0 40px rgba(59,130,246,0.05); }
+  50%       { box-shadow: 0 0 30px rgba(59,130,246,0.30), 0 0 60px rgba(59,130,246,0.10); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(59,130,246,0.2); }
+  50%       { border-color: rgba(59,130,246,0.5); }
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Animation utilities ── */
+
+.animate-fade-in    { animation: fadeIn  0.7s ease both; }
+.animate-fade-up    { animation: fadeUp  0.7s ease both; }
+.animate-fade-down  { animation: fadeDown 0.5s ease both; }
+.animate-scale-in   { animation: scaleIn 0.6s ease both; }
+.animate-glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+.animate-slow-drift { animation: slowDrift 8s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
+.delay-600 { animation-delay: 600ms; }
+.delay-700 { animation-delay: 700ms; }
+.delay-800 { animation-delay: 800ms; }
+
+/* ── Glass morphism ── */
+
+.glass {
+  background: rgba(6, 8, 16, 0.6);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(59, 130, 246, 0.12);
+}
+
+.glass-card {
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.08), 0 8px 32px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
+
+/* ── Blue glow text ── */
+
+.glow-text {
+  text-shadow: 0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(59, 130, 246, 0.2);
+}
+
+.glow-text-sm {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+/* ── Gradient text ── */
+
+.gradient-text {
+  background: linear-gradient(135deg, #e8eaf2 0%, #93c5fd 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-blue {
+  background: linear-gradient(135deg, #93c5fd 0%, #3b82f6 60%, #1d4ed8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Divider line ── */
+
+.blue-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.4), transparent);
+}
+
+/* ── Page transition wrapper ── */
+
+.page-enter {
+  animation: fadeUp 0.6s ease both;
+}
+
+/* ── Star canvas background ── */
+
+.star-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Cosmic background gradient ── */
+
+.cosmic-bg {
+  background: radial-gradient(ellipse at 20% 20%, rgba(15, 30, 65, 0.6) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 80%, rgba(10, 20, 50, 0.4) 0%, transparent 60%),
+              #060810;
+}
+
+/* ── Section spacing ── */
+
+.section-pad {
+  @apply py-24 px-6 md:px-12 lg:px-24;
+}
+
+/* ── Nav link ── */
+
+.nav-link {
+  position: relative;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(180, 195, 220, 0.8);
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #3b82f6;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #e8eaf2;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: #93c5fd;
+}
+
+/* ── Scroll reveal via intersection observer ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Orbit decorative circle ── */
+
+.orbit-ring {
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  border-radius: 50%;
+  animation: slowDrift 10s ease-in-out infinite;
+}
